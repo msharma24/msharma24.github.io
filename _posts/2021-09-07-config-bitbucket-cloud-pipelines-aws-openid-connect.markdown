@@ -1,16 +1,17 @@
 ---
 layout: post
-title: Configuring Bitbucket Pipelines to connect to AWS with OpenID Connect 
+title: Configuring Bitbucket Pipelines to connect to AWS with OpenID Connect
 ---
+{% seo %}
 [Bitbucket](https://bitbucket.org/product?utm_source=partner&utm_medium=aws&utm_campaign=aws-oidc-blog) [Pipelines](https://bitbucket.org/product/features/pipelines) provide an easy and integrated way to run CI/CD Pipelines for your projects hosted in the Bitbucket code repositories using a straightforward YAML [DSL](https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/) to CI/CD your applications and other cloud resources to production, however using static AWS IAM keys as secured variables at the individual code repository level or as Bitbucket workspace variables with AWS [STS](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html) permissions to jump into other AWS accounts can become challenging when operating at a large scale with multiple AWS accounts. Static IAM Keys also introduces the risk of secrets sprawling into other applications and may leak into logs in plain text when using a bad script and there always remain the endless toil of manually rotating and replacing the keys in your CI/CD tool of choice.
 
 * When was the last time you have rotated  and replaced the IAM keys used for resource deployments ?*
-  <a href="https://imgflip.com/i/5m8tbc"><img src="https://i.imgflip.com/5m8tbc.jpg" title="made at imgflip.com"/></a> 
-  
-  
+  <a href="https://imgflip.com/i/5m8tbc"><img src="https://i.imgflip.com/5m8tbc.jpg" title="made at imgflip.com"/></a>
+
+
 ##  No more IAM secret key management !
  The new [OpenID Connect](https://www.youtube.com/watch?v=Kb56GzQ2pSk) feature in Bitbucket streamlines the configuration of authenticating  the Bitbucket Pipelines across your AWS landscape without having to generate Static IAM keys. The OpenID Connect is based on OAuth 2.0 and uses REST/JSON message flows.
- 
+
 ##   Configuring Bitbucket Pipelines as an IdP on AWS using Cloudformation Template
 
 ***Prerequisites***
@@ -44,7 +45,7 @@ In order to register the OpenId IdP in AWS we first need to obtain the Thumbprin
 <img src="{{site.baseurl}}/images/bb-oidc/bb-settings.png">
 
 
-	
+
 2 - Make a note of the top level domain - *for example *`api.bitbucket.org`
 
 3 - Run the following command to generate the certificate ,starting from ```-----BEGIN CERTIFICATE-----``` until ```-----END CERTIFICATE-----```of the second certificate in the output.
@@ -68,7 +69,7 @@ In order to register the OpenId IdP in AWS we first need to obtain the Thumbprin
 * 		   **URL**           - The Provider Identity URL obtained from he Bitbucket Repository OpenID Connect Settings.
 
 <details>
-  <summary>CloudFormation Template - Click to expand!</summary> 
+  <summary>CloudFormation Template - Click to expand!</summary>
 {% highlight yaml linenos %}
 ---
 AWSTemplateFormatVersion: '2010-09-09'
@@ -173,13 +174,13 @@ Outputs:
     Value: !GetAtt OIDCProvider.Arn
 
 {% endhighlight %}
-</details>	    
+</details>
 
 
 
 
 
-## Demo 
+## Demo
 I have configured my demo AWS account with the above mentioned Cloudformation Template to create the Bitbucket IAM idP and pushed the following pipeline yaml file to assume the Web Identity IAM Role and print the aws account information.
 
 {% highlight yaml linenos %}

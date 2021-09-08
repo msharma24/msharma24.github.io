@@ -2,13 +2,13 @@
 layout: post
 title: Terraform Backend for multi-account AWS Architecture
 ---
-
+{% seo %}
 TL;DR How to create  S3 Bucket and DynamoDB Table for Terraform backend in a multi-account AWS environment.
 
 
 I'm working with a customer who has deployed  a multitude of AWS Accounts in their AWS Organisation and have arranged the AWS accounts in multiple Organisational Units (OU) . They have also leveraged the [AWS Control Tower](https://aws.amazon.com/controltower/?control-blogs.sort-by=item.additionalFields.createdDate&control-blogs.sort-order=desc) to easily set up the governance , security and the best practices across the AWS organisation.
 
-They have also adopted Terraform as the preferred  [Infrastructure as Code (IAC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) tool, and using a separate AWS S3 Bucket and a DynamoDb Table as the [Terraform backend ](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html) per AWS account is one of the community best practices. 
+They have also adopted Terraform as the preferred  [Infrastructure as Code (IAC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) tool, and using a separate AWS S3 Bucket and a DynamoDb Table as the [Terraform backend ](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html) per AWS account is one of the community best practices.
 
 This created the need to having a fully automated solution in place to deploy an AWS S3 Bucket and a DynamoDB Table in each of the existing and future  AWS Accounts with a standard configuration  , so that the teams across the organisation can use the same AWS S3 Bucket and the DynamoDB Table for the Terraform State  management of their application stack environment(s).
 
@@ -17,9 +17,9 @@ In order to solve this problem, we decided to write a CloudFormation Template wh
 ## Solution Deployment
 When you deploy the AWS Control Tower service across the AWS Organisation , it creates `AWSControlTowerExecution` IAM Role in every child account enrolled and uses the `AWSControlTowerStackSetRole` IAM Role in the Management AWS Account to deploy stack sets in all the AWS accounts created by AWS Control Tower.
 
-	  
+
 <details>
-  <summary>CloudFormation Template - Click to expand!</summary> 
+  <summary>CloudFormation Template - Click to expand!</summary>
 {% highlight yaml linenos %}
 ---
 AWSTemplateFormatVersion: 2010-09-09
@@ -51,7 +51,7 @@ Resources:
           Value: Terraform State Backend
         - Key: "Managed  By"
           Value: CloudFormation Stack
-	
+
   TerraformLockTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
@@ -70,7 +70,7 @@ Resources:
           Value: Terraform State Backend Lock
         - Key: "Managed By"
           Value: CloudFormation stack
-	
+
 Outputs:
   StackName:
     Description: CloudFormation Stack Name
@@ -82,8 +82,8 @@ Outputs:
     Description: DynamoDB for Terraform Stack Lock
     Value: !Ref TerraformLockTable
 {% endhighlight %}
-</details>	    
-	
+</details>
+
 ## Steps to deploy the above CloudFormation Template
 1. 	Login to the AWS Management accounts (*Root Account*) console and go to the AWS Organisation service page and make a copy of the of the Organisational Units  `id` in which you wish to create the AWS S3 Bucket and AWS DynamoDB Table using the CloudFormation Stackset. <img src="{{site.baseurl}}/images/blog01/aws-org.png">
 
@@ -93,7 +93,7 @@ Outputs:
 3. Next, Go to the AWS CloudFormation Service page and enable the CloudFormation Stackset trusted access with the AWS Organisations by following this [link](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-enable-trusted-access.html) to AWS documentation.
 
 
-4. Click on StackSets after expanding the menu on the left ,and then click the "create stackset" button and upload the `terraform-state-backend-CloudFormation.yaml` and then click `Next`	<img src="{{site.baseurl}}/images/blog01/cfn-upload.png">		 On the next screen, Enter the stackset name - example: `terraform-backend-stackset` and click `Next` again.	
+4. Click on StackSets after expanding the menu on the left ,and then click the "create stackset" button and upload the `terraform-state-backend-CloudFormation.yaml` and then click `Next`	<img src="{{site.baseurl}}/images/blog01/cfn-upload.png">		 On the next screen, Enter the stackset name - example: `terraform-backend-stackset` and click `Next` again.
 5. Choose the "Service-managed permissions" as default option and click `Next`
 
 
@@ -108,7 +108,7 @@ Once the CloudFormation Stackset completes, each AWS account in the targeted Org
 
 * S3 Bucket:**`terraform-state-backend-<12 Digit AWS Account id>`**
 * Dynamodb: **`terraform-state-backend-lock-<12 Digit AWS Account id>`**
-		
+
 and they can be  referenced in the Terraform `backend` configuration as follows:-
 {% highlight php lineos %}
 // backend.tf
@@ -125,5 +125,5 @@ terraform {
 }
 {% endhighlight %}
 
-						
-				
+
+
