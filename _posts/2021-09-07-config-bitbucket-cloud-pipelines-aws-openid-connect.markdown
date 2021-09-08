@@ -57,7 +57,7 @@ In order to register the OpenId IdP in AWS we first need to obtain the Thumbprin
 
 5 - Now the next step is to deploy the Example Cloudformation Template in your AWS Account or you can also deploy the Template as Cloudformation Stackset targeting multiple AWS Accounts Organisational Units as mentioned in my previous [blog post](https://mukeshsharma.dev/2021/07/12/aws-terraform-s3-backend.html).
 
-**Note**: The Cloudformation Template in this blog assigns the IAM role with default AdministratorAccess Policy - You may want to attach a more restrictive IAM policy for production usage.
+**Note**: The Cloudformation Template in this blog assigns the IAM role with default AdministratorAccess Policy - You may want to attach a more restrictive IAM policy for your usage.
 
 **The following Parameters are required to deploy the Cloudformation Template:**
 
