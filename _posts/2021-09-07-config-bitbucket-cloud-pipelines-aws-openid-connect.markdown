@@ -180,7 +180,7 @@ Outputs:
 
 
 ## Demo 
-I have configured my demo AWS account with the above mentioned Cloudformation Template to create the Bitbucket IAM idP and pushed the following pipeline yaml file to assume the Web Identity IAM Role and print the aws account information.
+I have configured my demo AWS account with the above mentioned Cloudformation Template to create the Bitbucket IAM idP and pushed the following pipeline yaml file to to the Bitbucket Repository and the pipeline can assume the Web Identity IAM Role to print the aws account information.
 
 {% highlight yaml linenos %}
 //bitbucket-pipelines.yml
