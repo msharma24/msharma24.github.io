@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: AWS Network Firewall in action
