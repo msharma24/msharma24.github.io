@@ -26,6 +26,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mukeshsharma.dev/" # the base hostname & protocol for your site, e.g. http://example.com
 
 github_username:  msharma24
+linkedin_username: mukesh-sharma-508822158
 # Google Analytics
 google_analytics: UA-202056740-1
 
