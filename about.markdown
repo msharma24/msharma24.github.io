@@ -12,7 +12,7 @@ Over the past 10 years, I've helped from start-ups to large enterprises attain b
 
 My skills include Infrastructure as Code tools, such as Terraform and Cloudformation (I frequently contribute to open-source projects), and Ansible and Puppet configuration management
 
-I am also an  [AWS APN Ambassador](https://aws.amazon.com/partners/ambassadors/?cards-body.sort-by=item.additionalFields.ambassadorName&cards-body.sort-order=asc&awsf.apn-ambassadors-location=*all&cards-body.q=Mukesh%2BSharma&cards-body.q_operator=AND) , and I currently provide services for an AWS Consulting Partner.
+I am also an  [AWS Ambassador](https://aws.amazon.com/partners/ambassadors/?cards-body.sort-by=item.additionalFields.ambassadorName&cards-body.sort-order=asc&awsf.apn-ambassadors-location=*all&cards-body.q=Mukesh%2BSharma&cards-body.q_operator=AND) , and I currently provide services for an AWS Consulting Partner.
 
 If you're looking for DevOps and Cloud architectural assistance, please get in touch. 
 
