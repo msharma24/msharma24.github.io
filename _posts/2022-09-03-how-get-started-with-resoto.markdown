@@ -5,10 +5,10 @@ title: How to get started with Resoto on AWS
 <img src="{{site.baseurl}}/images/resoto/resoto_cli.png">
 # Introduction
 [Resoto](https://resoto.com/about) is an [Open Source](https://github.com/someengineering/resoto)  CLI tool by [someengineering](https://some.engineering/)  that puts  your entire cloud infrastructures inventory at your fingertips and also eases mundane cloud janitor tasks such as finding and deleting unused cloud resources across multiple AWS accounts (*which could be costing the business an arm and a leg*).
-To Top it off, Resoto also  enables you to document the  cloud inventory for audit purposes in a pretty format.	
+To top it off, Resoto also  enables you to document the  cloud inventory for audit purposes in a pretty format.	
 
 # How does Resoto work?
-Resoto indexes the infrastrcure resources of your AWS account(s) by capturing resource dependencies and mapping your entire
+Resoto indexes the infrastructure resources of your AWS account(s) by capturing resource dependencies and mapping your entire
 Infrastructure in a graph database. This graph database can then be easily queried using Resoto's powerful search syntax.
 
 **To list a few examples-**
@@ -95,7 +95,7 @@ You will presented with the Resoto Shell prompt `>`
 
 #### Whats next?
 Browse through the official Resoto documentation which includes  [How to guides](https://resoto.com/docs/how-to-guides) and examples to query the resources in your AWS Account.
-If you find Resoto valuable please - Star ★ the Resoto Github repository  to support the project [https://github.com/someengineering/resoto](https://github.com/someengineering/resoto) 
+If you find Resoto valuable, please - Star ★ the Resoto Github repository  to support the project [https://github.com/someengineering/resoto](https://github.com/someengineering/resoto) 
 
 #### Resoto Community
 Join the official Resoto Discord Server at [https://discord.gg/someengineering](https://discord.gg/someengineering)  to hang out with the Resoto dev team and other community members,including myself :)
