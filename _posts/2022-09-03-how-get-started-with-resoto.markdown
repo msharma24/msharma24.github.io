@@ -60,7 +60,7 @@ Resoto can be installed using the following methods–
 [Resoto website has detailed instructions on how to get started with the above methods](https://resoto.com/docs/getting-started/install-resoto)
 
 #### Deploy Resoto on EC2 using Terraform
-For my own experimentation with Resoto,  I have created a Terraform template to spin up Resoto on an EC2 Instance with an IAM Profile - I  Open Sourced the  on  Github at URL --> 
+For my own experimentation with Resoto,  I have created a Terraform template to spin up Resoto on an EC2 Instance with an IAM Profile - I have Open Sourced this Project on  Github at URL --> 
 [terraform-template-resoto](https://github.com/msharma24/terraform-template-resoto) 
 
 #### How to deploy Resoto on EC2 using Terraform
